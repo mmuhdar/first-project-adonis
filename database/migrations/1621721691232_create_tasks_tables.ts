@@ -7,7 +7,7 @@ export default class Tasks extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments("id").primary();
       table.string("name").notNullable();
-      // table.text("description").nullable();
+      table.text("description").nullable();
       table.timestamp("due_at").nullable();
       table.integer("status_id").unsigned().notNullable().defaultTo(1);
       table.integer("created_by").unsigned().references("id").inTable("users");
