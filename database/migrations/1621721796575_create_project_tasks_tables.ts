@@ -6,13 +6,19 @@ export default class ProjectTasks extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments("id").primary();
-      table.integer("role_id").unsigned().notNullable().defaultTo(1);
+      table.integer("sort_order").unsigned().notNullable().defaultTo(1);
       table
         .integer("project_id")
         .unsigned()
+        .notNullable()
         .references("id")
         .inTable("projects");
-      table.integer("user_id").unsigned().references("id").inTable("users");
+      table
+        .integer("task_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("tasks");
       table.timestamps(true, true);
     });
   }

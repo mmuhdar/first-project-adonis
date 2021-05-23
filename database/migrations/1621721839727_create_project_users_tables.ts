@@ -9,10 +9,16 @@ export default class ProjectUsers extends BaseSchema {
       table
         .integer("project_id")
         .unsigned()
+        .notNullable()
         .references("id")
         .inTable("projects");
-      table.integer("user_id").unsigned().references("id").inTable("users");
-      table.integer("sort_order").notNullable().defaultTo(0);
+      table
+        .integer("user_id")
+        .unsigned()
+        .notNullable()
+        .references("id")
+        .inTable("users");
+      table.integer("role_id").unsigned().notNullable().defaultTo(0);
       table.timestamps(true, true);
     });
   }
